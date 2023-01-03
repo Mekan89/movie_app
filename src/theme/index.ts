@@ -13,6 +13,11 @@ export const roboto = Roboto({
 });
 
 const components = {
+    MuiMenuItem: {
+        styleOverrides: {
+            root: {},
+        },
+    },
     MuiStack: {
         defaultProps: {
             direction: "row",
