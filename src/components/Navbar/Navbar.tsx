@@ -2,22 +2,17 @@ import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsOutlined from "@mui/icons-material/SettingsOutlined";
-import { Menu, MenuItem, useTheme as useMuiTheme } from "@mui/material";
+import { Menu, MenuItem } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
-import { useAtom } from "jotai";
 import { useTheme } from "next-themes";
 import { useState } from "react";
-import { isDarkModeAtom, themeAtom } from "../../state/atoms";
 import { FlexBetween } from "../../styles";
 import BurgerMenu from "./BurgerMenu";
 import SearchBar from "./SearchBar";
 
 const Navbar = () => {
-    const setMode = useAtom(themeAtom);
-    const [darkMode, setDarkMode] = useAtom(isDarkModeAtom);
-    const theme = useMuiTheme();
     const [anchorUserEl, setAnchorUserEl] = useState(null);
     const isUserOpen = Boolean(anchorUserEl);
     const { resolvedTheme, setTheme } = useTheme();
@@ -36,9 +31,7 @@ const Navbar = () => {
                 <BurgerMenu />
                 <SearchBar />
                 <FlexBetween gap='1.5rem'>
-                    {/* <IconButton onClick={() => setDarkMode(!darkMode)}> */}
                     <IconButton onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}>
-                        {/* {theme.palette.mode === "dark" ? <DarkModeOutlined sx={{ fontSize: "25px" }} /> : <LightModeOutlined sx={{ fontSize: "25px" }} />} */}
                         {resolvedTheme === "dark" ? <DarkModeOutlined sx={{ fontSize: "25px" }} /> : <LightModeOutlined sx={{ fontSize: "25px" }} />}
                     </IconButton>
                     <IconButton>
